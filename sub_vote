@@ -1,0 +1,42 @@
+vector<int> solve(vector<int>& nums) {
+    int a,b,n=nums.size(),f=0,s=0;
+    for(int i : nums)
+    {
+        if(i==a)
+        f++;
+        else if(i==b)
+        s++;
+        else if(f==0)
+        {
+            f=1;
+            a=i;
+        }
+        else if(s==0)
+        {
+            s=1;
+            b=i;
+        }
+        else
+        {
+            f--;
+            s--;
+        }
+    }
+    f=0;
+    s=0;
+    for(int i=0;i<n;i++)
+    {
+        if(nums[i]==a)
+        f++;
+        if(nums[i]==b)
+        s++;
+    
+    }
+    vector<int>ans;
+    if(f>n/3)
+    ans.push_back(a);
+    if(s>n/3)
+    ans.push_back(b);
+    sort(ans.begin(),ans.end());
+    return ans;
+}
