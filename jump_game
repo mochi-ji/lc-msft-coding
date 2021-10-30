@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int jump(vector<int>& nums) {
+        int n = nums.size();
+        if(n<2)
+            return 0;
+        //if(n==1)
+        int ans=1;
+        int msf=nums[0];
+        int curm = nums[0];
+        for(int i=1;i<n;i++)
+        {
+            curm = max(curm, i+nums[i]);
+            if(i==n-1)
+                break;
+            if(i==msf)
+            {
+                msf = curm;
+                ans++;
+            }
+        }
+        return ans;
+    }
+};
