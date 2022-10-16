@@ -29,7 +29,6 @@ public:
                     ss.insert(newstr);
                     q.push(newstr);
                 }
-                //ans++;
             }
             ans++;
         }
