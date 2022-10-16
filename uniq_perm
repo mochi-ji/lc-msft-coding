@@ -25,7 +25,6 @@ public:
         vector<int>temp;
         vector<bool>used(nums.size(),false);
         solve(ans,temp,nums,used);
-        //sort(ans.begin(),ans.end());
         return ans;
     }
 };
