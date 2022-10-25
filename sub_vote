@@ -1,5 +1,6 @@
 vector<int> solve(vector<int>& nums) {
     int a,b,n=nums.size(),f=0,s=0;
+    // moore's voting algo
     for(int i : nums)
     {
         if(i==a)
