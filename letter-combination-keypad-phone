@@ -1,0 +1,42 @@
+class Solution {
+public:
+    void solve(string a, vector<string>&useful, string cur, vector<string>&ans)
+    {
+        if(cur.length()==a.length())
+        {
+            ans.push_back(cur);
+            return;
+        }
+        string searchSpace = useful[cur.length()];
+        for(int i=0;i<searchSpace.length();i++)
+        {
+            cur+=searchSpace[i];
+            solve(a,useful, cur, ans);
+            cur.pop_back();
+        }
+        return;
+    }
+    vector<string> letterCombinations(string A) {
+      if(A.size()==0)
+        return {};
+        unordered_map<char,string>m;
+        m['0']="0";
+        m['1']="1";
+        m['2']="abc";
+        m['3']="def";
+        m['4']="ghi";
+        m['5']="jkl";
+        m['6']="mno";
+        m['7']="pqrs";
+        m['8']="tuv";
+        m['9']="wxyz";
+        vector<string>useful;
+        for(char c: A)
+        {
+            useful.push_back(m[c]);
+        }
+        vector<string>ans;
+        solve(A,useful,"",ans);
+        return ans;
+    }
+};
