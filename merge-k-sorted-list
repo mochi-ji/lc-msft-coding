@@ -29,6 +29,7 @@ public:
              }
             kk=1;    
         }
+        // cout<<head->val;
         return head;
     }
 };
