@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int shortestPath(vector<vector<int>>& grid, int k) {
+        int n = grid.size(), m =grid[0].size();
+        queue<vector<int>>q;
+        q.push({0,0,0});
+        int dirs[5] = {-1,0,1,0,-1};
+        int ans=0;
+        bool vis[100][100][1001]={false};  
+        vis[0][0][0]=1;
+        while(!q.empty())
+        {
+            int size = q.size();
+            for(int i=0;i<size;i++) 
+            {
+                auto p = q.front();
+                q.pop();
+                int x = p[0], y = p[1], kk = p[2];
+                //cout<< x<< " "<<y<< " "<<ans<<endl;
+                if(x==n-1 and y==m-1)
+                    return ans;
+                //vis[p.first.first][p.first.second]=p.second;
+                for(int i=0;i<=3;i++)
+                {
+                    int nx = x+dirs[i];
+                    int ny = y+dirs[i+1];
+                    int nk = kk;
+                    if(nx>=0 and ny>=0 and nx<n and ny<m)
+                    {
+                        if(grid[nx][ny]==1)
+                          nk++;
+                        if(nk<=k and !vis[nx][ny][nk])
+                        {
+                            vis[nx][ny][nk]=1;
+                            q.push({nx,ny,nk});
+                        }
+                    }
+                }
+               // ans++;
+            }
+            ans++;
+        }
+        return -1;
+    }
+};
